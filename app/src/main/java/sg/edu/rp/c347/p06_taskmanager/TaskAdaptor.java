@@ -17,7 +17,7 @@ public class TaskAdaptor extends ArrayAdapter<Task> {
     Context context;
     ArrayList<Task> tasks;
     int resource;
-    TextView tvName, tvDesc, tvID;
+    TextView tvName, tvDesc, tvID, tvTimer;
 
     public TaskAdaptor(Context context, int resource, ArrayList<Task> tasks) {
         super(context, resource, tasks);
@@ -38,6 +38,7 @@ public class TaskAdaptor extends ArrayAdapter<Task> {
         tvID = (TextView) rowView.findViewById(R.id.tvID);
         tvName = (TextView) rowView.findViewById(R.id.tvName);
         tvDesc = (TextView) rowView.findViewById(R.id.tvDesc);
+        tvTimer = (TextView) rowView.findViewById(R.id.tvTimer);
 
         Task task = tasks.get(position);
 
@@ -46,6 +47,9 @@ public class TaskAdaptor extends ArrayAdapter<Task> {
         tvID.setText(id);
         tvName.setText(task.getName());
         tvDesc.setText(task.getDesc());
+        int intTimer = task.getTimer();
+        String timer = "" + intTimer;
+        tvTimer.setText(timer + " Seconds");
 
         return rowView;
     }
